@@ -9,7 +9,6 @@ def abrirArquivo():
 
 def obterFrases():
     data = abrirArquivo()
-
     return data["decretos"]
 
 def sortearFrases(frases):
@@ -17,12 +16,10 @@ def sortearFrases(frases):
 
 def addFrases(frase):
     data = abrirArquivo()
-    data[decretos].append(frase)
+    data["decretos"].append(frase)
 
     with codecs.open('DecretoDB.ddg', mode='w', encoding='utf-8') as data_file:
         json.dump(data, data_file, ensure_ascii=False)
 
 def manipularMensagem(mensagem):
     return ' '.join(map(str.strip, mensagem))
-
-
