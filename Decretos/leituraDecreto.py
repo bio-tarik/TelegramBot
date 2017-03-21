@@ -1,18 +1,18 @@
-# exec(open(leituraDecreto.py).read())
 import json, random, codecs
 import os
+import Helpers
 
 def abrirArquivo():
     with open(os.path.join(os.path.dirname(__file__), 'DecretoDB.ddg')) as data_file:
         data = json.load(data_file)
     return data
 
-def obterFrases():
+def obterFrasesDoArquivo():
     data = abrirArquivo()
     return data["decretos"]
 
-def sortearFrases(frases):
-    return random.sample(frases, 5)
+def sortearFrases(frases, quantidade):
+    return random.sample(frases, quantidade)
 
 def addFrases(frase):
     data = abrirArquivo()
@@ -23,3 +23,12 @@ def addFrases(frase):
 
 def manipularMensagem(mensagem):
     return ' '.join(map(str.strip, mensagem))
+
+def formatarMensagem(frases):
+    retorno = [];
+    retorno.append('{} - {}'.format(Helpers.retornarDiaDaSemana(), Helpers.retornarHora()))
+    retorno.append('horário de Brasília. Já pode:\n\n')
+    retorno.extend(frases)
+    retorno.append('\n\nDecreto liberado. Cumpra-se #decreto')
+    
+    return ' '.join(retorno)

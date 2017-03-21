@@ -17,10 +17,8 @@ def help(bot, update):
         'Hello {}'.format(update.message.from_user.first_name))
 
 def decretar(bot, update):
-    decreto = frases.sortearFrases(frases.obterFrases())
-
-    #"ajuste técnico" pra lidar com caracteres unicode. Será removido assim que possível
-    decreto = ' '.join(decreto).encode( 'unicode-escape' ).decode( 'unicode-escape' )
+    conteudo = frases.sortearFrases(frases.obterFrasesDoArquivo(), 10)
+    decreto = frases.formatarMensagem(conteudo);
     update.message.reply_text(decreto)
 
 def adicionar(bot, update, args):
