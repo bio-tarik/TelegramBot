@@ -2,6 +2,7 @@ import leituraDecreto as frases
 import Helpers
 from telegram.ext import Updater, CommandHandler
 import logging
+import os
 
 # Enable logging
 logging.basicConfig(format=('%(asctime)s - %(name)s -'
@@ -52,7 +53,7 @@ def error(bot, update, error):
 
 
 def main():
-    updater = Updater('')
+    updater = Updater(os.environ['T0KEN'])
 
     updater.dispatcher.add_handler(
         CommandHandler('start', start))
