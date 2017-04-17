@@ -1,1 +1,1 @@
-worker: python DecretoesDeGaragem.py
+worker: python Decretos/DecretoesDeGaragem.py
