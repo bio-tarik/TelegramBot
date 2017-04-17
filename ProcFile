@@ -1,1 +1,1 @@
-web: python3 DecretoesDeGaragem.py
+worker: python DecretoesDeGaragem.py
