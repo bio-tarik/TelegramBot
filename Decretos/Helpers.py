@@ -22,7 +22,7 @@ def VerificarAdmin(bot, update):
         return True
     else:
         if (update.message.from_user.id in
-                obterListaAdmin(bot, update.message.chat_id)):
+                ObterListaAdmin(bot, update.message.chat_id)):
             return True
     return False
 
