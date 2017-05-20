@@ -1,24 +1,27 @@
-import json
 import random
 import codecs
-import os
 import Helpers
 
 
-def abrirArquivo():
-    with open(os.path.join(os.path.dirname(__file__),
-                           'DecretoDB.ddg')) as data_file:
-        data = json.load(data_file)
-    return data
-
-
 def obterFrasesDoArquivo():
-    data = abrirArquivo()
+    data = Helpers.abrirArquivo('DecretoDB.ddg')
     return data["decretos"]
 
 
 def sortearFrases(frases, quantidade):
-    return random.sample(frases, quantidade)
+    datasComemorativas = [d for d in frases if d['data'] != ""]
+    registrosUnicos = [d['frases'] for d in frases if d['data'] == "" and d['unico'] == "True"]
+    demaisRegistros = [d['frases'] for d in frases if d['data'] == "" and d['unico'] != "True"]
+    retorno = []
+
+    retorno += Helpers.MesclarMultiplosArrays([item['frases'] for item in datasComemorativas if Helpers.VerificarFeriado(item['data'])])
+    retorno += Helpers.MesclarMultiplosArrays(demaisRegistros)
+
+    retorno = random.sample(retorno, quantidade - len(registrosUnicos))
+
+    retorno += Helpers.MesclarMultiplosArrays([random.sample(item, 1) for item in registrosUnicos])
+
+    return retorno
 
 
 def addFrases(frase):

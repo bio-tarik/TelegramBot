@@ -1,0 +1,45 @@
+{
+    "feriados":
+    [
+		{
+			"nome": "Confraternização Universal",
+			"data": "01/01"
+		},
+		{
+			"nome": "Carnaval",
+			"data": ""
+		},
+		{
+			"nome": "Pascoa",
+			"data": ""
+		},
+		{
+			"nome": "Tiradentes",
+			"data": "21/04"
+		},
+		{
+			"nome": "Dia do Trabalho",
+			"data": "01/05"
+		},
+		{
+			"nome": "Independência do Brasil",
+			"data": "07/09"
+		},
+		{
+			"nome": "Nossa Senhora Aparecida",
+			"data": "12/10"
+		},
+		{
+			"nome": "Finados",
+			"data": "02/11"
+		},
+		{
+			"nome": "Proclamação da República",
+			"data": "15/11"
+		},
+		{
+			"nome": "Natal",
+			"data": "25/12"
+		}
+    ]
+}

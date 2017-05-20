@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 def start(bot, update):
-    update.message.reply_text('Bem vindo ao Decretoes de Garagem bot. '
+    update.message.reply_text('[DEV] Bem vindo ao Decretoes de Garagem bot. '
                               'Meu objetivo é trazer alegria '
                               'responsável (ou não) aos membros do '
                               'melhor grupo.\n\n'
@@ -21,8 +21,8 @@ def start(bot, update):
 
 
 def help(bot, update):
-    update.message.reply_text('É sexta-feira? 18h00? Está com sede e com o '
-                              'copo na mão? Só falta a permissão? '
+    update.message.reply_text('[DEV] É sexta-feira? 18h00? Está com sede e '
+                              'com o copo na mão? Só falta a permissão? '
                               'Então digite /decretar !')
 
 
@@ -30,9 +30,9 @@ def decretar(bot, update):
     if Helpers.VerificaSePodeDecretar(Helpers.VerificarAdmin(bot, update)):
         conteudo = frases.sortearFrases(frases.obterFrasesDoArquivo(), 10)
         decreto = frases.formatarMensagem(conteudo)
-        update.message.reply_text(decreto)
+        update.message.reply_text('[DEV] ' + decreto)
     else:
-        update.message.reply_text('Oloko, ainda não é hora de decretar! '
+        update.message.reply_text('[DEV] Oloko, ainda não é hora de decretar! '
                                   'Solicite um decreto extraordinário ao '
                                   'dragão mais próximo.')
 
@@ -53,7 +53,7 @@ def error(bot, update, error):
 
 
 def main():
-    updater = Updater(os.environ['T0KEN'])
+    updater = Updater('')
 
     updater.dispatcher.add_handler(
         CommandHandler('start', start))
