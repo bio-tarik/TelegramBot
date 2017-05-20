@@ -2,15 +2,19 @@ from datetime import datetime
 import pytz
 
 
+def dateTimeComTZ():
+    return datetime.now(pytz.timezone('Brazil/East'))
+
+
 def retornarDiaDaSemana():
     dias = ('Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira',
             'Sexta-feira', 'Sábado', 'Domingo')
-    return dias[datetime.today().weekday()]
+    return dias[dateTimeComTZ().weekday()]
 
 
 def retornarHora():
-    date = datetime.now(pytz.timezone('Brazil/East'))
-    return '{}:{}h'.format(date.hour, date.minute)
+    date = dateTimeComTZ()
+    return '{}:{:02d}h'.format(date.hour, date.minute)
 
 
 def ObterListaAdmin(bot, chat_id):
@@ -28,6 +32,6 @@ def VerificarAdmin(bot, update):
 
 
 def VerificaSePodeDecretar(usuarioEhAdmin):
-    if ((bool(usuarioEhAdmin) or (datetime.today().weekday() == 4 and
-                                  int(datetime.today().hour) >= 18))):
+    if ((bool(usuarioEhAdmin) or (dateTimeComTZ().weekday() == 4 and
+                                  int(dateTimeComTZ().hour) >= 18))):
         return True
